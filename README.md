@@ -40,3 +40,5 @@ DNAME="cn=$HOSTNAME, ou=Training, o=MuleSoft, c=US"
 -keystore "$KEYSTORE" -storetype pkcs12 -storepass "$PASS"
 - curl -ik -X PUT -H "Content-Type: application/json" -d "{\"lastName\":\"Smith\",\"numBags\":2}" https://localhost:8081/api/v1/tickets/PNR123/checkin
 - -M-Danypoint.platform.client_id=16c09c01413547018d8acef6738e5ca8 -M-Danypoint.platform.client_secret=1f63a29B32704a968a6aB7c97A61C89b
+- cd $PROJECT_HOME
+- cp -R check-in-papi check-in-papi-template
