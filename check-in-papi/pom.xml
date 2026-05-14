@@ -4,7 +4,7 @@
 
 	<groupId>477c325e-4f61-4844-8743-4969798259c4</groupId>
 	<artifactId>check-in-papi-app</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
 
 	<name>check-in-papi</name>
@@ -12,7 +12,7 @@
 	<parent>
 	    <groupId>477c325e-4f61-4844-8743-4969798259c4</groupId>
 	    <artifactId>solutions-parent-pom</artifactId>
-	    <version>1.0.0-SNAPSHOT</version>
+	    <version>1.0.0</version>
 	    <relativePath>../parent-pom/pom.xml</relativePath>
 	</parent>
 	

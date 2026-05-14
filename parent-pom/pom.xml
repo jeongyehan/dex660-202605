@@ -12,12 +12,12 @@
     <!-- students: replace with your AP org ID -->
     <groupId>477c325e-4f61-4844-8743-4969798259c4</groupId>
     <artifactId>solutions-bom</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <relativePath>../bom/pom.xml</relativePath>
   </parent>
   <artifactId>solutions-parent-pom</artifactId>
   <groupId>477c325e-4f61-4844-8743-4969798259c4</groupId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>pom</packaging>
   <name>solutions-parent-pom</name>
   <!-- IMPORTANT: Due to a limitation in MUnit, this file must be installed into the local Maven repo after every change: -->
@@ -57,7 +57,39 @@
           <groupId>org.mule.tools.maven</groupId>
           <artifactId>mule-maven-plugin</artifactId>
           <extensions>true</extensions>
-          <configuration/>
+          <configuration>
+            <cloudhub2Deployment>
+              <businessGroup/>
+              <environment>prod</environment>
+              <muleVersion>${app.runtime.semver}</muleVersion>
+              <target>Cloudhub-US-East-2</target>
+              <provider>MC</provider>
+              <replicas>1</replicas>
+              <vCores>0.1</vCores>
+              <applicationName>${project.name}</applicationName>
+              <connectedAppClientId>${ap.ca.client_id}</connectedAppClientId>
+              <connectedAppClientSecret>${ap.ca.client_secret}</connectedAppClientSecret>
+              <connectedAppGrantType>client_credentials</connectedAppGrantType>
+              <properties>
+                <anypoint.platform.client_id>${ap.client_id}</anypoint.platform.client_id>
+                <anypoint.platform.client_secret>${ap.client_secret}</anypoint.platform.client_secret>
+              </properties>
+              <deploymentSettings>
+                <http>
+                  <inbound>
+                    <lastMileSecurity>true</lastMileSecurity>
+                  </inbound>
+                </http>
+              </deploymentSettings>
+              <integrations>
+                <services>
+                  <objectStoreV2>
+                    <enabled>true</enabled>
+                  </objectStoreV2>
+                </services>
+              </integrations>
+            </cloudhub2Deployment>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
