@@ -17,9 +17,22 @@
   </parent>
   <artifactId>solutions-parent-pom</artifactId>
   <groupId>477c325e-4f61-4844-8743-4969798259c4</groupId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>pom</packaging>
   <name>solutions-parent-pom</name>
+  <properties>
+    <type>custom</type>
+    <deployment.env>set with -Ddeployment.env=...</deployment.env>
+    <deployment.suffix>-${deployment.env}</deployment.suffix>
+    <deployment.name>${project.name}${deployment.suffix}</deployment.name>
+
+    <ap.environment>${deployment.env}</ap.environment>
+    <ap.client_id>set with -Dap.client_id=...</ap.client_id>
+    <ap.client_secret>set with -Dap.client_secret=...</ap.client_secret>
+    <ap.ca.client_id>set with -Dap.ca.client_id=...</ap.ca.client_id>
+    <ap.ca.client_secret>set with-Dap.ca.client_secret=...</ap.ca.client_secret>
+  </properties>
+
   <!-- IMPORTANT: Due to a limitation in MUnit, this file must be installed into the local Maven repo after every change: -->
   <!-- mvn -f pom.xml install:install-file -Dfile=pom.xml -DpomFile=pom.xml -->
   <build>
@@ -60,20 +73,25 @@
           <configuration>
             <cloudhub2Deployment>
               <businessGroup/>
-              <environment>prod</environment>
+              <environment>${ap.environment}</environment>
               <muleVersion>${app.runtime.semver}</muleVersion>
               <target>Cloudhub-US-East-2</target>
               <provider>MC</provider>
               <replicas>1</replicas>
               <vCores>0.1</vCores>
-              <applicationName>${project.name}</applicationName>
+              <applicationName>${deployment.name}</applicationName>
               <connectedAppClientId>${ap.ca.client_id}</connectedAppClientId>
               <connectedAppClientSecret>${ap.ca.client_secret}</connectedAppClientSecret>
               <connectedAppGrantType>client_credentials</connectedAppGrantType>
               <properties>
                 <anypoint.platform.client_id>${ap.client_id}</anypoint.platform.client_id>
                 <anypoint.platform.client_secret>${ap.client_secret}</anypoint.platform.client_secret>
+
+                <env>${deployment.env}</env>
               </properties>
+              <secureProperties>
+                <encrypt.key>${encrypt.key}</encrypt.key>
+              </secureProperties>
               <deploymentSettings>
                 <http>
                   <inbound>

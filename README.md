@@ -20,8 +20,8 @@
 
 ### API Instance ID:
 - prod: 20904505
-- test:
-- dev:
+- test:20907425
+- dev: 20907417
 
 ## Commands
 - export PROJECT_HOME=/Users/yehan.jeong/Desktop/dex660-202605
@@ -53,3 +53,12 @@ DNAME="cn=$HOSTNAME, ou=Training, o=MuleSoft, c=US"
 - mvn clean deploy
 - mvn clean deploy -DmuleDeploy -Dap.client_id=16c09c01413547018d8acef6738e5ca8 -Dap.client_secret=1f63a29B32704a968a6aB7c97A61C89b -Dap.ca.client_id=0618ee2c71844ef5936eeb6b54277e07 -Dap.ca.client_secret=B307fEC1960847cc9E831da17fFD61Fe
 - curl -ik -X PUT -H "Content-Type: application/json" -d "{\"lastName\":\"Smith\",\"numBags\":2}" https://check-in-papi-oj3ymg.5sc6y6-4.usa-e2.cloudhub.io/api/v1/tickets/PNR123/checkin
+- curl -ik -X PUT -H "Content-Type: application/json" -d "{\"lastName\":\"Smith\",\"numBags\":2}" https://localhost:8081/api/v1/tickets/PNR123/checkin
+- -M-Denv=test
+- -M-Denv=prod
+- -M-Dencrypt.key=secure12345
+- cd $PROJECT_HOME/check-in-papi
+- mvn clean deploy -Dencrypt.key=secure12345
+- mvn clean deploy -DmuleDeploy -Dap.client_id=16c09c01413547018d8acef6738e5ca8 -Dap.client_secret=1f63a29B32704a968a6aB7c97A61C89b -Dap.ca.client_id=0618ee2c71844ef5936eeb6b54277e07 -Dap.ca.client_secret=B307fEC1960847cc9E831da17fFD61Fe -Dencrypt.key=secure12345 -Ddeployment.env=dev
+- mvn clean deploy -DmuleDeploy -Dap.client_id=16c09c01413547018d8acef6738e5ca8 -Dap.client_secret=1f63a29B32704a968a6aB7c97A61C89b -Dap.ca.client_id=0618ee2c71844ef5936eeb6b54277e07 -Dap.ca.client_secret=B307fEC1960847cc9E831da17fFD61Fe -Dencrypt.key=secure12345 -Ddeployment.env=test
+- mvn clean deploy -DmuleDeploy -Dap.client_id=16c09c01413547018d8acef6738e5ca8 -Dap.client_secret=1f63a29B32704a968a6aB7c97A61C89b -Dap.ca.client_id=0618ee2c71844ef5936eeb6b54277e07 -Dap.ca.client_secret=B307fEC1960847cc9E831da17fFD61Fe -Dencrypt.key=secure12345 -Ddeployment.env=prod -Ddeployment.suffix=
