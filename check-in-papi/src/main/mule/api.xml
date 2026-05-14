@@ -4,7 +4,7 @@ http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/
 http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
     <apikit:config name="api-config" api="resource::477c325e-4f61-4844-8743-4969798259c4:check-in-papi:1.0.0:oas:zip:api.json" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
 	<flow name="api-main">
-        <http:listener path="/api/v1/*" config-ref="apiHttpListenerConfig">
+        <http:listener path="/api/${api.majorVersion}/*" config-ref="apiHttpListenerConfig">
             <http:response statusCode="#[vars.httpStatus default 200]">
                 <http:headers><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
             </http:response>

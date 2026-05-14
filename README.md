@@ -42,3 +42,8 @@ DNAME="cn=$HOSTNAME, ou=Training, o=MuleSoft, c=US"
 - -M-Danypoint.platform.client_id=16c09c01413547018d8acef6738e5ca8 -M-Danypoint.platform.client_secret=1f63a29B32704a968a6aB7c97A61C89b
 - cd $PROJECT_HOME
 - cp -R check-in-papi check-in-papi-template
+- cd $PROJECT_HOME 
+- mkdir parent-pom
+- cp $STUDENT_FILE/solutions/walkthroughs/devprd/module02/wt2-2_solution/parent-pom/pom.xml parent-pom/pom.xml
+- mkdir bom
+- cp $STUDENT_FILE/solutions/walkthroughs/devprd/module02/wt2-2_solution/bom/pom.xml bom/pom.xml

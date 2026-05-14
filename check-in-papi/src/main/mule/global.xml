@@ -11,12 +11,13 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
 	
 	<http:listener-config name="apiHttpListenerConfig">
-	    <http:listener-connection host="0.0.0.0" port="8081" protocol="HTTPS" tlsContext="apiTLSContext">
-	    </http:listener-connection>
+	    <http:listener-connection host="0.0.0.0" port="${https.port}" protocol="HTTPS" tlsContext="apiTLSContext"/>
 	</http:listener-config>
 	<tls:context name="apiTLSContext" doc:name="TLS Context" >
-	    <tls:key-store type="pkcs12" path="check-in-papi.p12" alias="server" keyPassword="mule12345" password="mule12345" />
+	    <tls:key-store type="${tls.keystore.type}" path="${tls.keystore.path}" alias="${tls.keystore.alias}" keyPassword="${tls.keystore.keyPassword}" password="${tls.keystore.password}" />
 	</tls:context>
-	<api-gateway:autodiscovery apiId="20904505" ignoreBasePath="true" doc:name="API Autodiscovery" flowRef="api-main" />
+	<api-gateway:autodiscovery apiId="${api.id}" ignoreBasePath="true" doc:name="API Autodiscovery" flowRef="api-main" />
+	<configuration-properties doc:name="Configuration properties" doc:id="1d5826ad-3467-4b64-8711-6bf75fed709f" file="properties.yaml" />
+	
 
 	</mule>
