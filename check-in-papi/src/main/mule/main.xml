@@ -34,6 +34,9 @@ output application/json
         </ee:transform>
 	</flow>
 	<flow name="check-in-by-pnr" doc:id="19ff5fb4-d832-4650-9581-a168f1388732" >
+		<flow-ref name="check-in-flights-management" />
+		<flow-ref name="register-passenger-data" />
+		<flow-ref name="create-payment-for-bags" />
 		<ee:transform doc:name="Transform Message">
             <ee:variables>
                 <ee:set-variable variableName="PNR">attributes.uriParams.'PNR'</ee:set-variable>
@@ -51,4 +54,14 @@ output application/json
         </ee:transform>
 		<tracing:set-logging-variable doc:name="PNR" doc:id="c057ce18-5390-4916-8833-cfdc2d586c42" variableName="PNR" value="#[vars.PNR default '']"/>
 	</flow>
+	<flow name="check-in-flights-management">
+	    <logger />
+	</flow>
+	<flow name="register-passenger-data">
+	    <logger />
+	</flow>
+	<flow name="create-payment-for-bags">
+	    <logger />
+	</flow>
+	
 </mule>
