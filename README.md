@@ -82,3 +82,4 @@ DNAME="cn=$HOSTNAME, ou=Training, o=MuleSoft, c=US"
 - mvn install:install-file -Dfile=parent-pom/pom.xml -DpomFile=parent-pom/pom.xml
 - cd $PROJECT_HOME/check-in-papi
 - mvn clean verify -U -Dencrypt.key=secure12345
+- curl -ik -X PUT -H "Content-Type: application/json" -d "{\"lastName\":\"Smith\",\"numBags\":2}" https://localhost:8081/api/v1/tickets/PNR123/checkin

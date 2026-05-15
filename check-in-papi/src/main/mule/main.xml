@@ -34,15 +34,15 @@ output application/json
         </ee:transform>
 	</flow>
 	<flow name="check-in-by-pnr" doc:id="19ff5fb4-d832-4650-9581-a168f1388732" >
-		<flow-ref name="check-in-flights-management" />
-		<flow-ref name="register-passenger-data" />
-		<flow-ref name="create-payment-for-bags" />
-		<ee:transform doc:name="Transform Message">
+		<flow-ref name="check-in-flights-management" doc:id="b084c3d2-c27c-45cb-b69e-25d62eaaea70"/>
+		<flow-ref name="register-passenger-data" doc:id="92e56bb0-fe42-48d7-8b66-c37abc2b9f7b"/>
+		<flow-ref name="create-payment-for-bags" doc:id="8069beed-84cd-4339-814e-3d0929583749"/>
+		<ee:transform doc:name="Transform Message" doc:id="4f020014-4411-4512-90ce-643262b3c6a0">
             <ee:variables>
-                <ee:set-variable variableName="PNR">attributes.uriParams.'PNR'</ee:set-variable>
+                <ee:set-variable variableName="PNR"><![CDATA[attributes.uriParams.'PNR']]></ee:set-variable>
             </ee:variables>
         </ee:transform>
-		<ee:transform doc:name="Transform Message">
+		<ee:transform doc:name="Transform Message" doc:id="326767f8-79cf-4137-a395-2c3361b4c430">
             <ee:message>
                 <ee:set-payload><![CDATA[%dw 2.0
 output application/json
