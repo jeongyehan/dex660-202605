@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>477c325e-4f61-4844-8743-4969798259c4</groupId>
-	<artifactId>check-in-papi-app</artifactId>
-	<version>1.0.2</version>
+	<artifactId>apps-commons</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
-	<name>check-in-papi</name>
+	<name>apps-commons</name>
 	
 	<parent>
 	    <groupId>477c325e-4f61-4844-8743-4969798259c4</groupId>
@@ -15,19 +15,13 @@
 	    <version>1.0.2</version>
 	    <relativePath>../parent-pom/pom.xml</relativePath>
 	</parent>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.runtime>4.11.0</app.runtime>
 		<mule.maven.plugin.version>4.7.0</mule.maven.plugin.version>
-		
-		<api.groupId>477c325e-4f61-4844-8743-4969798259c4</api.groupId>
-		<api.artifactId>check-in-papi</api.artifactId>
-		<api.version>1.0.0</api.version>
-		
-		<api.layer>${api.layer.papi}</api.layer>	 
 	</properties>
 
 	<build>
@@ -35,12 +29,14 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.2.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
+				<configuration>
+				    <classifier>mule-plugin</classifier>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -56,49 +52,7 @@
 			<artifactId>mule-sockets-connector</artifactId>
 			<classifier>mule-plugin</classifier>
 		</dependency>
-		<dependency>
-		    <groupId>${api.groupId}</groupId>
-		    <artifactId>${api.artifactId}</artifactId>
-		    <version>${api.version}</version>
-		    <classifier>oas</classifier>
-		    <type>zip</type>
-		</dependency>
-		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-apikit-module</artifactId>
-			<classifier>mule-plugin</classifier>
-		</dependency>
-		<dependency>
-		    <groupId>com.mulesoft.modules</groupId>
-		    <artifactId>mule-secure-configuration-property-module</artifactId>
-		    <classifier>mule-plugin</classifier>
-		</dependency>
-		<dependency>
-		    <groupId>org.mule.modules</groupId>
-		    <artifactId>mule-tracing-module</artifactId>
-		    <classifier>mule-plugin</classifier>
-		</dependency>
-		<dependency>
-		    <groupId>${student.deployment.ap.orgid}</groupId>
-		    <artifactId>apps-commons</artifactId>
-		    <classifier>mule-plugin</classifier>
-		</dependency>
 	</dependencies>
-
-	<repositories>
-		<repository>
-			<id>anypoint-exchange-v3</id>
-			<name>Anypoint Exchange</name>
-			<url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
-			<id>mulesoft-releases</id>
-			<name>MuleSoft Releases Repository</name>
-			<url>https://repository.mulesoft.org/nexus/repository/releases/</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
 
 	<pluginRepositories>
 		<pluginRepository>

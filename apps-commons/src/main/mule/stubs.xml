@@ -5,9 +5,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
-	<import file="health-common.xml" />	
-	<sub-flow name="check-all-dependencies-are-alive" >
+	
+	<http:listener-config name="apiHttpListenerConfig">
+	    <http:listener-connection host="0.0.0.0" protocol="HTTP" port="8081"/>
+	</http:listener-config>
+	<sub-flow name="check-all-dependencies-are-alive">
 	    <logger />
 	</sub-flow>
 	
-</mule>
+	</mule>
