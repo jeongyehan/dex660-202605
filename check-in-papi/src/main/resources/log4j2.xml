@@ -15,6 +15,9 @@
             <SizeBasedTriggeringPolicy size="10 MB"/>
             <DefaultRolloverStrategy max="10"/>
         </RollingFile>
+        <Console name="Console" target="SYSTEM_OUT">
+		    <PatternLayout pattern="%-5p %d [%t] [%MDC] %c: %m%n"/>
+		</Console>       
     </Appenders>
 
     <Loggers>
@@ -28,6 +31,7 @@
 
         <AsyncRoot level="INFO">
             <AppenderRef ref="file"/>
+            <AppenderRef ref="Console"/>
         </AsyncRoot>
     </Loggers>
 

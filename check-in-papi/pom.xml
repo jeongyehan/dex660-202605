@@ -70,6 +70,11 @@
 		    <groupId>com.mulesoft.modules</groupId>
 		    <artifactId>mule-secure-configuration-property-module</artifactId>
 		    <classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+		    <groupId>org.mule.modules</groupId>
+		    <artifactId>mule-tracing-module</artifactId>
+		    <classifier>mule-plugin</classifier>
 		</dependency>	
 	</dependencies>
 
