@@ -78,3 +78,7 @@ DNAME="cn=$HOSTNAME, ou=Training, o=MuleSoft, c=US"
 - mvn deploy -f pom.xml -Pdeploy-to-exchange-v3
 - cd $PROJECT_HOME/apps-commons
 - mvn deploy
+- cd $PROJECT_HOME
+- mvn install:install-file -Dfile=parent-pom/pom.xml -DpomFile=parent-pom/pom.xml
+- cd $PROJECT_HOME/check-in-papi
+- mvn clean verify -U -Dencrypt.key=secure12345

@@ -118,6 +118,34 @@
             </cloudhub2Deployment>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>com.mulesoft.munit.tools</groupId>
+          <artifactId>munit-maven-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>test</id>
+              <phase>test</phase>
+              <goals>
+                <goal>test</goal>
+                <goal>coverage-report</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <runtimeVersion>${app.runtime}</runtimeVersion>
+            <runtimeProduct>MULE_EE</runtimeProduct>
+            <environmentVariables>
+              <encrypt.key>${encrypt.key}</encrypt.key>
+            </environmentVariables>
+            <coverage>
+              <runCoverage>true</runCoverage>
+              <formats>
+                <format>console</format>
+                <format>html</format>
+              </formats>
+            </coverage>
+          </configuration>
+        </plugin> 
       </plugins>
     </pluginManagement>
   </build>

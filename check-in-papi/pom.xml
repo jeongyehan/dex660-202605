@@ -8,26 +8,23 @@
 	<packaging>mule-application</packaging>
 
 	<name>check-in-papi</name>
-	
 	<parent>
-	    <groupId>477c325e-4f61-4844-8743-4969798259c4</groupId>
-	    <artifactId>solutions-parent-pom</artifactId>
-	    <version>1.0.2</version>
-	    <relativePath>../parent-pom/pom.xml</relativePath>
+		<groupId>477c325e-4f61-4844-8743-4969798259c4</groupId>
+		<artifactId>solutions-parent-pom</artifactId>
+		<version>1.0.2</version>
+		<relativePath>../parent-pom/pom.xml</relativePath>
 	</parent>
-	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.runtime>4.11.0</app.runtime>
 		<mule.maven.plugin.version>4.7.0</mule.maven.plugin.version>
-		
 		<api.groupId>477c325e-4f61-4844-8743-4969798259c4</api.groupId>
 		<api.artifactId>check-in-papi</api.artifactId>
 		<api.version>1.0.0</api.version>
-		
-		<api.layer>${api.layer.papi}</api.layer>	 
+		<api.layer>${api.layer.papi}</api.layer>
+		<munit.version>3.7.0</munit.version>
 	</properties>
 
 	<build>
@@ -41,6 +38,11 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>com.mulesoft.munit.tools</groupId>
+				<artifactId>munit-maven-plugin</artifactId>
+				<version>${munit.version}</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -57,11 +59,11 @@
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
-		    <groupId>${api.groupId}</groupId>
-		    <artifactId>${api.artifactId}</artifactId>
-		    <version>${api.version}</version>
-		    <classifier>oas</classifier>
-		    <type>zip</type>
+			<groupId>${api.groupId}</groupId>
+			<artifactId>${api.artifactId}</artifactId>
+			<version>${api.version}</version>
+			<classifier>oas</classifier>
+			<type>zip</type>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.modules</groupId>
@@ -69,19 +71,36 @@
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
-		    <groupId>com.mulesoft.modules</groupId>
-		    <artifactId>mule-secure-configuration-property-module</artifactId>
-		    <classifier>mule-plugin</classifier>
+			<groupId>com.mulesoft.modules</groupId>
+			<artifactId>mule-secure-configuration-property-module</artifactId>
+			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
-		    <groupId>org.mule.modules</groupId>
-		    <artifactId>mule-tracing-module</artifactId>
-		    <classifier>mule-plugin</classifier>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-tracing-module</artifactId>
+			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
-		    <groupId>${student.deployment.ap.orgid}</groupId>
-		    <artifactId>apps-commons</artifactId>
-		    <classifier>mule-plugin</classifier>
+			<groupId>${student.deployment.ap.orgid}</groupId>
+			<artifactId>apps-commons</artifactId>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-runner</artifactId>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-tools</artifactId>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.weave</groupId>
+			<artifactId>assertions</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
