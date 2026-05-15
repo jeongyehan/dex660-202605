@@ -62,3 +62,8 @@ DNAME="cn=$HOSTNAME, ou=Training, o=MuleSoft, c=US"
 - mvn clean deploy -DmuleDeploy -Dap.client_id=16c09c01413547018d8acef6738e5ca8 -Dap.client_secret=1f63a29B32704a968a6aB7c97A61C89b -Dap.ca.client_id=0618ee2c71844ef5936eeb6b54277e07 -Dap.ca.client_secret=B307fEC1960847cc9E831da17fFD61Fe -Dencrypt.key=secure12345 -Ddeployment.env=dev
 - mvn clean deploy -DmuleDeploy -Dap.client_id=16c09c01413547018d8acef6738e5ca8 -Dap.client_secret=1f63a29B32704a968a6aB7c97A61C89b -Dap.ca.client_id=0618ee2c71844ef5936eeb6b54277e07 -Dap.ca.client_secret=B307fEC1960847cc9E831da17fFD61Fe -Dencrypt.key=secure12345 -Ddeployment.env=test
 - mvn clean deploy -DmuleDeploy -Dap.client_id=16c09c01413547018d8acef6738e5ca8 -Dap.client_secret=1f63a29B32704a968a6aB7c97A61C89b -Dap.ca.client_id=0618ee2c71844ef5936eeb6b54277e07 -Dap.ca.client_secret=B307fEC1960847cc9E831da17fFD61Fe -Dencrypt.key=secure12345 -Ddeployment.env=prod -Ddeployment.suffix=
+- curl -ik https://localhost:8081/alive
+- curl -ik https://localhost:8081/ready
+- cd $PROJECT_HOME/check-in-papi
+- mvn clean deploy -Dencrypt.key=secure12345
+- mvn clean deploy -DmuleDeploy -Dap.client_id=16c09c01413547018d8acef6738e5ca8 -Dap.client_secret=1f63a29B32704a968a6aB7c97A61C89b -Dap.ca.client_id=0618ee2c71844ef5936eeb6b54277e07 -Dap.ca.client_secret=B307fEC1960847cc9E831da17fFD61Fe -Dencrypt.key=secure12345 -Ddeployment.env=dev
